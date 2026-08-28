@@ -6,6 +6,8 @@ import com.plateprofit.ai.exception.GlobalExceptionHandler;
 import com.plateprofit.ai.exception.ResourceNotFoundException;
 import com.plateprofit.ai.service.ResourceCrudService;
 import com.plateprofit.ai.service.DishCostingService;
+import com.plateprofit.ai.service.SalesProcessingService;
+import com.plateprofit.ai.service.ExpenseService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -22,12 +24,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest({RestaurantController.class, DishController.class, IngredientController.class,
-        RecipeController.class, SaleController.class, InventoryController.class, ExpenseController.class})
+    RecipeController.class, SaleController.class, InventoryController.class, ExpenseController.class})
 @Import(GlobalExceptionHandler.class)
 class CrudControllerTest {
     @Autowired MockMvc mvc;
     @MockBean ResourceCrudService service;
     @MockBean DishCostingService costingService;
+    @MockBean SalesProcessingService salesProcessingService;
+    @MockBean ExpenseService expenseService;
 
     @Test
     void restaurantCrudEndpointsWork() throws Exception {
@@ -61,7 +65,16 @@ class CrudControllerTest {
     @Test
     void saleCrudEndpointsWork() throws Exception {
         when(service.sales()).thenReturn(List.of());
-        exerciseCrud("/api/sales", "{\"restaurantId\":1,\"saleDate\":\"2026-08-28\",\"totalAmount\":25}");
+        exerciseSaleCrud();
+    }
+
+    private void exerciseSaleCrud() throws Exception {
+        String json = "{\"restaurantId\":1,\"saleDate\":\"2026-08-28\",\"items\":[{\"dishId\":1,\"quantity\":2}]}";
+        mvc.perform(get("/api/sales")).andExpect(status().isOk());
+        mvc.perform(get("/api/sales/1")).andExpect(status().isOk());
+        mvc.perform(post("/api/sales").contentType(MediaType.APPLICATION_JSON).content(json)).andExpect(status().isCreated());
+        mvc.perform(put("/api/sales/1").contentType(MediaType.APPLICATION_JSON).content("{\"restaurantId\":1,\"saleDate\":\"2026-08-28\",\"totalAmount\":25}")).andExpect(status().isOk());
+        mvc.perform(delete("/api/sales/1")).andExpect(status().isNoContent());
     }
 
     @Test
@@ -72,8 +85,13 @@ class CrudControllerTest {
 
     @Test
     void expenseCrudEndpointsWork() throws Exception {
-        when(service.expenses()).thenReturn(List.of());
-        exerciseCrud("/api/expenses", "{\"restaurantId\":1,\"category\":\"GAS\",\"amount\":50,\"expenseDate\":\"2026-08-28\"}");
+        String json = "{\"restaurantId\":1,\"category\":\"GAS\",\"amount\":50,\"expenseDate\":\"2026-08-28\"}";
+        mvc.perform(get("/api/expenses?restaurantId=1&startDate=2026-08-01&endDate=2026-08-31")).andExpect(status().isOk());
+        mvc.perform(get("/api/expenses/1")).andExpect(status().isOk());
+        mvc.perform(post("/api/expenses").contentType(MediaType.APPLICATION_JSON).content(json)).andExpect(status().isCreated());
+        mvc.perform(put("/api/expenses/1").contentType(MediaType.APPLICATION_JSON).content(json)).andExpect(status().isOk());
+        mvc.perform(delete("/api/expenses/1")).andExpect(status().isNoContent());
+        mvc.perform(get("/api/expenses/total?restaurantId=1&startDate=2026-08-01&endDate=2026-08-31&category=GAS")).andExpect(status().isOk());
     }
 
     @Test

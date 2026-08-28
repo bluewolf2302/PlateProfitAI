@@ -16,8 +16,9 @@ The application will help restaurant owners manage dishes, recipes, ingredients,
 
 ```text
 PlateProfitAI/
-├── backend/       # Spring Boot REST API
+├── backend/       # Spring Boot REST API and AI proxy
 ├── frontend/      # React + Vite web application
+├── ai-service/    # FastAPI demand forecasting service
 └── README.md
 ```
 
@@ -26,10 +27,10 @@ PlateProfitAI/
 This repository is being built incrementally. The current backend step includes the persistence model and API boundaries only.
 
 - Spring Boot backend foundation, JPA entities, repositories, DTOs, and API scaffolds are present.
-- React + Vite frontend foundation is being created.
+- React + Vite frontend workspace with routed pages and live API loading states is present.
 - Database tables have not been created yet. Hibernate is configured with `ddl-auto=validate` for safety.
 Database credentials are read from environment variables and are not stored in the repository.
-- The Python AI/ML service has not been created yet.
+- FastAPI AI service currently supports prototype demand prediction with a sparse-history baseline fallback.
 - Business entities, authentication flows, APIs, and dashboard features will be added in later steps.
 
 ## Prerequisites
@@ -101,6 +102,22 @@ To create a production build:
 cd frontend
 npm run build
 ```
+
+The frontend reads `VITE_API_BASE_URL` from `frontend/.env.example`. It does not include mock business data. Pages show loading, empty, or unavailable states when the backend has no records or is offline.
+
+## Run the AI Service
+
+Python 3.11 or newer is recommended.
+
+```powershell
+cd ai-service
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8001
+```
+
+The AI service exposes `GET /health` and `POST /api/ai/demand/predict`. It returns a baseline estimate when fewer than seven matching observations are supplied and clearly labels that result. Set `AI_SERVICE_URL=http://localhost:8001` for the Spring Boot proxy.
 
 ## Incremental Development Order
 
