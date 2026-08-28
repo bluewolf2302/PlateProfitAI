@@ -23,12 +23,12 @@ PlateProfitAI/
 
 ## Current Step
 
-This repository is being built incrementally. The initial setup includes the application shells only.
+This repository is being built incrementally. The current backend step includes the persistence model and API boundaries only.
 
-- Spring Boot backend foundation is being created.
+- Spring Boot backend foundation, JPA entities, repositories, DTOs, and API scaffolds are present.
 - React + Vite frontend foundation is being created.
-- Database tables have not been created yet.
-- Database credentials and connections have not been configured yet.
+- Database tables have not been created yet. Hibernate is configured with `ddl-auto=validate` for safety.
+- Database credentials are read from environment variables and are not stored in the repository.
 - The Python AI/ML service has not been created yet.
 - Business entities, authentication flows, APIs, and dashboard features will be added in later steps.
 
@@ -51,6 +51,18 @@ node --version
 npm --version
 ```
 
+## Backend Environment Variables
+
+Before starting the backend, configure these variables in the terminal or your IDE run configuration:
+
+```powershell
+$env:SUPABASE_DB_URL = "jdbc:postgresql://<host>:5432/postgres?sslmode=require"
+$env:SUPABASE_DB_USERNAME = "<database-user>"
+$env:SUPABASE_DB_PASSWORD = "<database-password>"
+```
+
+The backend uses `spring.jpa.hibernate.ddl-auto=validate`, so it will not create, update, or delete database tables. Database migrations will be introduced explicitly after the schema is reviewed.
+
 ## Run the Backend
 
 From the repository root:
@@ -60,7 +72,7 @@ cd backend
 mvn spring-boot:run
 ```
 
-The backend will run at `http://localhost:8080` once its initial security configuration is added.
+The backend will run at `http://localhost:8080`. Authentication and JWT security are intentionally not included yet.
 
 To build the backend without running it:
 
