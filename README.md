@@ -28,12 +28,14 @@ This repository is being built incrementally. The current backend step includes 
 - Spring Boot backend foundation, JPA entities, repositories, DTOs, and API scaffolds are present.
 - React + Vite frontend foundation is being created.
 - Database tables have not been created yet. Hibernate is configured with `ddl-auto=validate` for safety.
-- Database credentials are read from environment variables and are not stored in the repository.
+Database credentials are read from environment variables and are not stored in the repository.
 - The Python AI/ML service has not been created yet.
 - Business entities, authentication flows, APIs, and dashboard features will be added in later steps.
 
 ## Prerequisites
 
+
+An example template is available at [backend/.env.example](backend/.env.example). Spring Boot does not load `.env` files automatically, so either export the variables in PowerShell as shown above or configure them in your IDE's run configuration. Never commit a populated `.env` file.
 Install the following software:
 
 - Java 21 or newer
