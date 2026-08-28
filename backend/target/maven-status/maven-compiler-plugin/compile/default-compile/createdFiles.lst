@@ -1,4 +1,5 @@
 com\plateprofit\ai\entity\SaleItem.class
+com\plateprofit\ai\exception\ResourceNotFoundException.class
 com\plateprofit\ai\controller\RecipeController.class
 com\plateprofit\ai\entity\Sale.class
 com\plateprofit\ai\repository\DishRepository.class
@@ -6,6 +7,7 @@ com\plateprofit\ai\PlateProfitAiApplication.class
 com\plateprofit\ai\repository\RestaurantRepository.class
 com\plateprofit\ai\repository\SaleRepository.class
 com\plateprofit\ai\dto\IngredientDto.class
+com\plateprofit\ai\service\ResourceCrudService.class
 com\plateprofit\ai\util\PackageMarker.class
 com\plateprofit\ai\repository\InventoryRepository.class
 com\plateprofit\ai\repository\RecipeItemRepository.class
@@ -20,8 +22,9 @@ com\plateprofit\ai\repository\IngredientRepository.class
 com\plateprofit\ai\entity\Restaurant.class
 com\plateprofit\ai\repository\UserRepository.class
 com\plateprofit\ai\dto\ExpenseDto.class
-com\plateprofit\ai\service\ResourceService.class
 com\plateprofit\ai\entity\TransactionType.class
+com\plateprofit\ai\service\DishCostingService.class
+com\plateprofit\ai\dto\DishCostDto.class
 com\plateprofit\ai\entity\Dish.class
 com\plateprofit\ai\entity\Unit.class
 com\plateprofit\ai\dto\DishDto.class

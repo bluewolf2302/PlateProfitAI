@@ -6,6 +6,7 @@ C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\controlle
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\controller\RecipeController.java
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\controller\RestaurantController.java
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\controller\SaleController.java
+C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\dto\DishCostDto.java
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\dto\DishDto.java
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\dto\ExpenseDto.java
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\dto\IngredientDto.java
@@ -28,6 +29,7 @@ C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\entity\Un
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\entity\User.java
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\entity\UserRole.java
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\exception\GlobalExceptionHandler.java
+C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\exception\ResourceNotFoundException.java
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\PlateProfitAiApplication.java
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\repository\DishRepository.java
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\repository\ExpenseRepository.java
@@ -39,5 +41,6 @@ C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\repositor
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\repository\SaleItemRepository.java
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\repository\SaleRepository.java
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\repository\UserRepository.java
-C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\service\ResourceService.java
+C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\service\DishCostingService.java
+C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\service\ResourceCrudService.java
 C:\Users\Shruti\PlateProfitAI\backend\src\main\java\com\plateprofit\ai\util\PackageMarker.java

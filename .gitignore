@@ -1,0 +1,18 @@
+# Local environment files and secrets
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Build output
+backend/target/
+frontend/node_modules/
+frontend/dist/
+
+# IDE files
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.iml
